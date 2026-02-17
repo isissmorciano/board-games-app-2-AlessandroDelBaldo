@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Giochi</title></head>
+  <body>
+    <h1>Giochi</h1>
+    <a href="{{ url_for('new_game') }}">Crea nuovo gioco</a>
+    <table border="1" cellpadding="4" cellspacing="0">
+      <tr><th>ID</th><th>Nome</th><th>Max giocatori</th><th>Durata (min)</th><th>Categoria</th><th>Partite</th></tr>
+      {% for g in games %}
+      <tr>
+        <td>{{ g.id }}</td>
+        <td>{{ g.nome }}</td>
+        <td>{{ g.numero_giocatori_massimo }}</td>
+        <td>{{ g.durata_media }}</td>
+        <td>{{ g.categoria }}</td>
+        <td><a href="{{ url_for('list_matches', game_id=g.id) }}">Vedi partite</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
